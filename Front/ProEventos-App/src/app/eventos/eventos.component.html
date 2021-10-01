@@ -1,11 +1,15 @@
-<h1>Eventos - Components</h1>
-
+<h2>Eventos - Components</h2>
+<hr>
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-      <button class="btn btn-outline-success" type="submit">Buscar</button>
-    </form>
+    <div class="d-flex">
+      <input class="form-control me-2"
+             type="search"
+             placeholder="Buscar"
+             aria-label="Buscar"
+             [(ngModel)]="filtrolista"
+      >
+    </div>
   </div>
 </nav>
 <table class="table table-striped">
@@ -27,7 +31,7 @@
     </tr>
   </thead>
   <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
+    <tr *ngFor="let evento of eventosFiltrados">
       <td>
         <img [collapse]="!exibirImg"
             [isAnimated]=true
@@ -43,7 +47,10 @@
       <td>{{evento.dataEvento}}</td>
       <td>{{evento.qtdPessoas}}</td>
       <td>{{evento.lote}}</td>
-      <td></td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm me-md-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm ">Excluir</button>
+      </td>
     </tr>
   </tbody>
   <tfoot *ngIf="!eventos.length">
